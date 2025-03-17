@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons'; // Thay đổi icon
+import { faCircleXmark, faMagnifyingGlass, faSignIn, faSpinner } from '@fortawesome/free-solid-svg-icons'; // Thay đổi icon
 import Tippy from '@tippyjs/react/headless';
 
 import PopperWrapper from '~/component/Popper/Wrapper';
-import AccountItem from '~/component/AccountItem'
+import AccountItem from '~/component/AccountItem';
+import Button from '~/component/Button';
 import styles from './Header.module.scss'
 import images from '~/assets/images';
 const cx = classNames.bind(styles)
@@ -44,7 +45,10 @@ function Header() {
                     </button>
                 </div>
             </Tippy>
-            <div className={cx('active')}></div>
+            <div className={cx('active')}>
+                <Button text >Upload</Button>
+                <Button primary >Log in</Button>
+            </div>
         </div>
     </header>
 }
