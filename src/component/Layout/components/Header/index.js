@@ -1,20 +1,55 @@
 import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faMagnifyingGlass, faSignIn, faSpinner } from '@fortawesome/free-solid-svg-icons'; // Thay đổi icon
+import { faCircleQuestion, faCircleXmark, faEarthAsia, faEllipsisVertical, faKeyboard, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons'; // Thay đổi icon
 import Tippy from '@tippyjs/react/headless';
 
 import PopperWrapper from '~/component/Popper/Wrapper';
 import AccountItem from '~/component/AccountItem';
 import Button from '~/component/Button';
+import Menu from '~/component/Popper/Menu';
 import styles from './Header.module.scss'
 import images from '~/assets/images';
 const cx = classNames.bind(styles)
+const MENU_ITEMS = [
+    {
+        icon: <FontAwesomeIcon icon={faEarthAsia} />,
+        title: 'English',
+        children: {
+            title: 'Language',
+            data: [
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English'
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt'
+                }
+            ]
+        }
+    },
+    {
+        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+        title: 'Feedback and help',
+        to: '/feedback'
+    },
+    {
+        icon: <FontAwesomeIcon icon={faKeyboard} />,
+        title: 'Keyboard shortcust'
+    }
+]
 function Header() {
     const [searchResult, setSearchResult] = useState([])
     useEffect(() => {
         setInterval(() => { setSearchResult([]) }, 3000)
     }, [])
+    //Handle logic
+    const handleMenuOnchange = (menuItem) => {
+        console.log(menuItem);
+    }
     return <header className={cx('wrapper')}>
         <div className={cx('inner')}>
             <img src={images.logo} alt='TIK TOK' />
@@ -48,6 +83,13 @@ function Header() {
             <div className={cx('active')}>
                 <Button text >Upload</Button>
                 <Button primary >Log in</Button>
+                <Menu
+                    items={MENU_ITEMS} onChange={handleMenuOnchange}
+                >
+                    <button className={cx('more-btn')}>
+                        <FontAwesomeIcon icon={faEllipsisVertical} />
+                    </button>
+                </Menu>
             </div>
         </div>
     </header>
