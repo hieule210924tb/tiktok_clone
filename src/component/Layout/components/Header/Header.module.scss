@@ -91,3 +91,23 @@
   background-color: transparent;
   cursor: pointer;
 }
+//Actions
+.actions{
+  display: flex;
+  align-items: center;
+}
+.action-btn{
+  color: #161823;
+  font-size: 2.2rem;
+  padding:4px 12px ;
+  cursor: pointer;
+  background-color: transparent;
+}
+.user-avata{
+  width: 32px;
+  height: 32px;
+  margin-left: 12px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+}
