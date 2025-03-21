@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleQuestion, faCircleXmark, faCloudUpload, faCoins, faEarthAsia, faEllipsisVertical, faGear, faKeyboard, faMagnifyingGlass, faSignOut, faSpinner, faUser }
+import { faCircleQuestion, faCircleXmark, faCoins, faEarthAsia, faEllipsisVertical, faGear, faKeyboard, faMagnifyingGlass, faSignOut, faSpinner, faUser }
     from '@fortawesome/free-solid-svg-icons'; // Thay đổi icon
 import Tippy from '@tippyjs/react';
 import HeadlessTippy from '@tippyjs/react/headless';
@@ -13,6 +13,8 @@ import Button from '~/component/Button';
 import Menu from '~/component/Popper/Menu';
 import styles from './Header.module.scss'
 import images from '~/assets/images';
+import { UploadIcon } from '~/component/Icon';
+import Image from '~/component/Image';
 const cx = classNames.bind(styles)
 const MENU_ITEMS = [
     {
@@ -113,7 +115,7 @@ function Header() {
                     <>
                         <Tippy delay={[0, 200]} content="Upload video" placement='bottom' >
                             <button className={cx('action-btn')}>
-                                <FontAwesomeIcon icon={faCloudUpload} />
+                                <UploadIcon />
                             </button>
                         </Tippy>
                     </>
@@ -125,14 +127,17 @@ function Header() {
                 )}
                 <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuOnchange}>
                     {currentUser ? (
-                        <img
+                        <Image
                             src='https://cellphones.com.vn/sforum/wp-content/uploads/2024/02/avatar-anh-meo-cute-5.jpg'
                             className={cx('user-avata')}
-                            alt='Le Van Hieu' />
+                            alt='Le Van Hieu'
+                            fallback="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0E7mA4V9YpPQDz6G5pT7hGXwRgudt7XzwiA&s"
+                        />
                     ) :
-                        <button className={cx('more-btn')}>
+                        (<button className={cx('more-btn')}>
                             <FontAwesomeIcon icon={faEllipsisVertical} />
-                        </button>}
+                        </button>
+                        )}
                 </Menu>
             </div>
         </div>
