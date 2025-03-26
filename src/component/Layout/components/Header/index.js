@@ -10,7 +10,7 @@ import Button from '~/component/Button';
 import Menu from '~/component/Popper/Menu';
 import styles from './Header.module.scss'
 import images from '~/assets/images';
-import { UploadIcon } from '~/component/Icon';
+import { UploadIcon, MessageIcon, InboxIcon } from '~/component/Icon';
 import Image from '~/component/Image';
 const cx = classNames.bind(styles)
 const MENU_ITEMS = [
@@ -85,19 +85,20 @@ function Header() {
             <div className={cx('actions')}>
                 {currentUser ? (
                     <>
-                        <Tippy delay={[0, 200]} content="Upload video" placement='bottom' >
+                        <Tippy delay={[0, 50]} content="Upload video" placement='bottom' >
                             <button className={cx('action-btn')}>
                                 <UploadIcon />
                             </button>
                         </Tippy>
-                        <Tippy delay={[0, 200]} content="Chia sẻ" placement='bottom' >
+                        <Tippy delay={[0, 50]} content="Message" placement='bottom' >
                             <button className={cx('action-btn')}>
-                                <UploadIcon />
+                                <MessageIcon />
                             </button>
                         </Tippy>
-                        <Tippy delay={[0, 200]} content="Thông báo" placement='bottom' >
+                        <Tippy delay={[0, 50]} content="Inbox" placement='bottom' >
                             <button className={cx('action-btn')}>
-                                <UploadIcon />
+                                <InboxIcon />
+                                <span className={cx('badge')}>12</span>
                             </button>
                         </Tippy>
                     </>
