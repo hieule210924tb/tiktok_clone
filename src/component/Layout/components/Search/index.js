@@ -5,6 +5,7 @@ import PopperWrapper from '~/component/Popper/Wrapper';
 import AccountItem from '~/component/AccountItem';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { SearchIcon } from '~/component/Icon';
+import { useDeboutce } from '~/hooks';
 
 import classNames from 'classnames/bind';
 import styles from './Search.module.scss';
@@ -14,16 +15,17 @@ function Search() {
     const [searchResult, setSearchResult] = useState([]);
     const [showResult, setShowResult] = useState(true);
     const [loading, setLoading] = useState(false);
+    const debounced = useDeboutce(searchValue, 500)
 
     const inputRef = useRef()
     useEffect(() => {
-        if (!searchValue.trim()) { // trim loại bỏ khoảng trống và loại bỏ mặc định khi chưa search
+        if (!debounced.trim()) { // trim loại bỏ khoảng trống và loại bỏ mặc định khi chưa search
             setSearchResult([]);
             return
         }
         setLoading(true)
         // encodeURIComponent : mã hóa đi các kí tự hợp lệ trên URL
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
+        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounced)}&type=less`)
             .then(res => res.json())
             .then(res => {
                 setSearchResult(res.data);
@@ -32,7 +34,7 @@ function Search() {
             .catch(() => {
                 setLoading(false)
             })
-    }, [searchValue]);
+    }, [debounced]);
     const handleClear = () => {
         setSearchValue('');
         setSearchResult([]);
