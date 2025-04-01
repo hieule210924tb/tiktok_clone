@@ -4,8 +4,10 @@ import { faCircleQuestion, faCoins, faEarthAsia, faEllipsisVertical, faGear, faK
     from '@fortawesome/free-solid-svg-icons'; // Thay đổi icon
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
-import Search from '../Search';
+import { Link } from 'react-router-dom';
+import routesConfig from "~/config/routes";
 
+import Search from '../Search';
 import Button from '~/component/Button';
 import Menu from '~/component/Popper/Menu';
 import styles from './Header.module.scss'
@@ -77,7 +79,9 @@ function Header() {
     ]
     return <header className={cx('wrapper')}>
         <div className={cx('inner')}>
-            <img src={images.logo} alt='TIK TOK' />
+            <Link to={routesConfig.home} className={cx("logo-link")}>
+                <img src={images.logo} alt='TIK TOK' />
+            </Link>
 
             {/* Search */}
             <Search />

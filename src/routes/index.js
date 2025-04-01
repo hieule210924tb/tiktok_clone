@@ -1,3 +1,4 @@
+import routesConfig from "~/config/routes";
 //Layouts
 import { HeaderOnly } from "~/component/Layout";
 // Page
@@ -9,24 +10,24 @@ import Search from "~/pages/Search"
 //Không cần login mà vẫn xem được
 const publicRoutes = [
     {
-        part: '/',
+        part: routesConfig.home,
         component: Home
     },
     {
-        part: '/following',
+        part: routesConfig.following,
         component: Following
     },
     {
-        part: '/:nickname',
+        part: routesConfig.profile,
         component: Profile
     },
     {
-        part: '/upload',
+        part: routesConfig.upload,
         component: Upload,
         layout: HeaderOnly
     },
     {
-        part: '/search',
+        part: routesConfig.search,
         component: Search,
         layout: null
     }
