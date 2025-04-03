@@ -1,6 +1,6 @@
-import routesConfig from "~/config/routes";
+import config from "~/config";
 //Layouts
-import { HeaderOnly } from "~/component/Layout";
+import { HeaderOnly } from "~/Layout";
 // Page
 import Home from "~/pages/Home";
 import Following from "~/pages/Following"
@@ -10,24 +10,24 @@ import Search from "~/pages/Search"
 //Không cần login mà vẫn xem được
 const publicRoutes = [
     {
-        part: routesConfig.home,
+        part: config.routes.home,
         component: Home
     },
     {
-        part: routesConfig.following,
+        part: config.routes.following,
         component: Following
     },
     {
-        part: routesConfig.profile,
+        part: config.routes.profile,
         component: Profile
     },
     {
-        part: routesConfig.upload,
+        part: config.routes.upload,
         component: Upload,
         layout: HeaderOnly
     },
     {
-        part: routesConfig.search,
+        part: config.routes.search,
         component: Search,
         layout: null
     }
