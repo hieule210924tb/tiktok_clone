@@ -116,7 +116,7 @@ function Header() {
                     {currentUser ? (
                         <Image
                             src='https://cellphones.com.vn/sforum/wp-content/uploads/2024/02/avatar-anh-meo-cute-5.jpg'
-                            className={cx('user-avata')}
+                            className={cx('user-avatar')}
                             alt='Le Van Hieu'
                             fallback="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0E7mA4V9YpPQDz6G5pT7hGXwRgudt7XzwiA&s"
                         />
